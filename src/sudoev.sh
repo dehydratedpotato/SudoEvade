@@ -38,9 +38,6 @@ fi
 echo $@ > $CMDFILE
 CMDPATH=$(type -P $(echo "$@" | awk '{print $1}'))
 
-# here we wait for the cloned binary belonging to our command to complete modifaction from the helper
-# once the binary is fully modded, we run it and do a clean exit. If it takes too long, we complain
-
 SECS=0
 
 until [ $SECS -ge 100 ]; do

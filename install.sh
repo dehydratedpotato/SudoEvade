@@ -34,7 +34,6 @@ function install()
 
     echo "${BOLD}$(date +"%T")${DLOB}: Installing SudoEvade"
 
-    # generating hidden dir and files for cmd strings and cloned binaries
 
     echo "${BOLD}$(date +"%T")${DLOB}: ${GREEN}Installing ==>${NC} Generating Directories..."
 
@@ -46,7 +45,6 @@ function install()
     sudo chown root:wheel $CMDFILE
     sudo chmod 4777 $CMDFILE
 
-    # fixing file permissions
 
     echo "${BOLD}$(date +"%T")${DLOB}: ${GREEN}Installing ==>${NC} Fixing Permissions..."
     
@@ -59,16 +57,13 @@ function install()
     
     chmod 755 $DIR/com.bitespotatobacks.SudoEvade.sh
     chmod 755 $DIR/sudoev.sh
+
+
+    echo "${BOLD}$(date +"%T")${DLOB}: ${GREEN}Installing ==>${NC} Relocating Client..."
     
     cp $DIR/sudoev.sh $DIR/sudoev
     sudo mv $DIR/sudoev /usr/local/bin/sudoev
 
-    # moving to proper spots
-
-    echo "${BOLD}$(date +"%T")${DLOB}: ${GREEN}Installing ==>${NC} Relocating Client..."
-    #sudo cp $DIR/sudoev.sh /usr/bin
-
-    # throwing plist into launch daemons
 
     echo "${BOLD}$(date +"%T")${DLOB}: ${GREEN}Installing ==>${NC} Creating Daemon..."
 
@@ -76,7 +71,6 @@ function install()
     sudo chmod 4777 /Library/LaunchDaemons/com.bitespotatobacks.SudoEvade.plist &
     sudo cat $DIR/com.bitespotatobacks.SudoEvade.plist > /Library/LaunchDaemons/com.bitespotatobacks.SudoEvade.plist &
 
-    # throwing shell into privleged helper tools
 
     echo "${BOLD}$(date +"%T")${DLOB}: ${GREEN}Installing ==>${NC} Creating Helper Tool..."
 
@@ -85,7 +79,6 @@ function install()
     sudo cat $DIR/com.bitespotatobacks.SudoEvade.sh > /Library/PrivilegedHelperTools/com.bitespotatobacks.SudoEvade.sh &
     sudo chmod 4755 /Library/PrivilegedHelperTools/com.bitespotatobacks.SudoEvade.sh &
 
-    # loading daemon
 
     echo "${BOLD}$(date +"%T")${DLOB}: ${GREEN}Installing ==>${NC} Loading Daemon..."
 
@@ -93,7 +86,6 @@ function install()
     sudo launchctl load -w /Library/LaunchDaemons/com.bitespotatobacks.SudoEvade.plist &
     sudo launchctl start -w /Library/LaunchDaemons/com.bitespotatobacks.SudoEvade.plist
 
-    # making sure all is well
 
     if sudo launchctl list | grep -q "com.bitespotatobacks.SudoEvade"; then
         echo "${BOLD}$(date +"%T")${DLOB}: Install Complete!"
@@ -126,7 +118,6 @@ function uninstall()
     echo "${BOLD}$(date +"%T")${DLOB}: ${GREEN}Uninstalling ==>${NC} Removing Helper Tool..."
     sudo rm /Library/PrivilegedHelperTools/com.bitespotatobacks.SudoEvade.sh
 
-    # making sure all is well
 
     if sudo launchctl list | grep -q "com.bitespotatobacks.SudoEvade"; then
         echo "${BOLD}$(date +"%T")${DLOB}: ${RED}Uninstall Failed${NC} ==> Could not remove daemon"
@@ -140,7 +131,6 @@ function uninstall()
 function usage()
 {
     echo "${BOLD}Usage: install.sh [-i|-u]${DLOB}"
-    #echo "${BOLD}The following command-line options are supported:${DLOB}"
     echo "   -h  show this message"
     echo "   -i  install SudoEvade"
     echo "   -u  uninstall SudoEvade"

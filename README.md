@@ -23,9 +23,10 @@
 </p>
 
 ## Installation and Usage
-1. Download the proper .zip for your operating system from the [latest release](https://github.com/BitesPotatoBacks/SudoEvade/releases)
-2. Unzip the .zip and run the `install.sh` script in your terminal, like so: `sudo sh PATH/TO/SCRIPT/install.sh -i`
-3. Once the installation is complete, you may execute a command with root priveleges using `sudoev YOUR_CMD_HERE`
+1. Download the proper .zip for your operating system from the [latest release](https://github.com/BitesPotatoBacks/SudoEvade/releases).
+2. Unzip the .zip and run the `install.sh` script in your terminal, like so: `sudo sh PATH/TO/SCRIPT/install.sh -i`.
+3. Once the installation is complete, you may execute a command with root priveleges using `sudoev YOUR_CMD_HERE`.
+___
 
 If the install script fails and reports `Daemon did not start`, run `sudo sh PATH/TO/SCRIPT/install.sh -u` and then reinstall. If this fails, you may attempt to start the Daemon manually by performing the following:
 ```
@@ -33,12 +34,12 @@ sudo chmod 600 /Library/LaunchDaemons/com.bitespotatobacks.SudoEvade.plist
 sudo launchctl load -w /Library/LaunchDaemons/com.bitespotatobacks.SudoEvade.plist
 sudo launchctl start -w /Library/LaunchDaemons/com.bitespotatobacks.SudoEvade.plist
 ```
-Check the Daemon status with `sudo launchctl list | grep "com.bitespotatobacks.SudoEvade"`
+Make sure the Daemon is running by checking `sudo launchctl list | grep "com.bitespotatobacks.SudoEvade"`.
   
 ## Known Issues
 The following issues are currently under investigation and will be fixed in an upcoming patch:
-- Scripts run with `sh` do not behave correctly
-- Certain shell builtin commands (such as `read`) complain and prevent themselves from being run
+- Using SudoEvade on scripts ran with `sh` do not behave correctly
+- Certain shell builtin commands (such as `read`) complain and prevent themselves from being run via SudoEvade
 
 If any other bugs or issues are identified or you want your system supported, please let me know in the [issues](https://github.com/BitesPotatoBacks/SudoEvade/issues) section.
 

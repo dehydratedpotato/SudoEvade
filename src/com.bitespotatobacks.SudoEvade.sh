@@ -46,13 +46,9 @@ while true; do
     echo ~
     echo "${BOLD}$TIME${DLOB}: ${BLUE}Watching ==>${NC} $CMDFILE"
     
-    # watching our txt file (which contains our command string) for changes
-    # when a change is detected, clone the bianry belonging to the command and modify it's permissions
-    # this is done infinitely until the script is killed
     
-    if [[ $NEWCMD != $OLDCMD ]] && [[ $NEWCMD != "" ]]; then
+    if [[ $NEWCMD != "" ]]; then
         CMDPATH=$(type -P $(echo "$NEWCMD" | awk '{print $1}'))
-        OLDCMD=$NEWCMD
         
         echo "${BOLD}$TIME${DLOB}: ${GREEN}Recieved ==>${NC} $NEWCMD (via client)"
         

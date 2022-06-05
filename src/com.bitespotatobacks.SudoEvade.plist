@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+   com.bitespotatobacks.SudoEvade.plist
+   SudoEvade (Daemon)
+
+   Created by BitesPotatoBacks on 5/31/22.
+   Copyright (c) 2022 BitesPotatoBacks. All rights reserved.
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.bitespotatobacks.SudoEvade</string>
+    <key>ServiceDescription</key>
+    <string>Run commands as root without a password</string>
+    <key>Program</key>
+    <string>/Library/PrivilegedHelperTools/com.bitespotatobacks.SudoEvade.sh</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Library/PrivilegedHelperTools/com.bitespotatobacks.SudoEvade.sh</string>
+    </array>
+    <key>RunAtLoad</key>
+     <true/>
+    <key>KeepAlive</key>
+    <true/>
+    <key>LaunchOnlyOnce</key>
+    <true/>
+    <key>StandardOutPath</key>
+    <string>/tmp/com.bitespotatobacks.SudoEvade.stdout</string>
+    <key>StandardErrorPath</key>
+    <string>/tmp/com.bitespotatobacks.SudoEvade.stderr</string>
+</dict>
+</plist>

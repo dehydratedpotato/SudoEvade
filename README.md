@@ -40,6 +40,8 @@ Make sure the Daemon is running by checking `sudo launchctl list | grep "com.bit
 The following issues are currently under investigation and will be fixed in an upcoming patch:
 - Using SudoEvade on scripts ran with `sh` do not behave correctly
 - Certain shell builtin commands (such as `read`) complain and prevent themselves from being run via SudoEvade
+- Running commands using `./` is broken using SudoEvade. For binaries not found in a dir in your `PATH`, please use complete paths.
+- Complete paths to binaries currently cannot contain spaces or be contained in quotes
 
 If any other bugs or issues are identified or you want your system supported, please let me know in the [issues](https://github.com/BitesPotatoBacks/SudoEvade/issues) section.
 

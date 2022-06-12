@@ -7,64 +7,48 @@
 #  Copyright (c) 2022 BitesPotatoBacks. All rights reserved.
 #
 
-# Issues:
-# - Shell scripts are broken
-# - some builtin bash scripts complain (such as read)
-
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-YELLOW='\033[0;33m'
-BLUE='\033[0;34m'
-PURPLE='\033[0;35m'
-NC='\033[0m'
-
-BOLD=$(tput bold)
-DLOB=$(tput sgr0)
-
 DIRSTUB="/Library/Caches/com.bitespotatobacks.SudoEvade"
 CMDFILE="$DIRSTUB/com.bitespotatobacks.SudoEvade.cmd.txt"
+CMDPATH=""
 
 NEWCMD=""
 OLDCMD=$(cat $CMDFILE)
+
 TIME=$(date +"%T")
 
-CMDPATH=""
 
 function stop() {
     TIME=$(date +"%T")
-    echo "${BOLD}$TIME${DLOB}: ${RED}Qutting${NC}"
+    echo "$TIME: Qutting..."
     exit
 }
 
+
 trap 'stop' SIGINT
-echo "${BOLD}$TIME${DLOB}: Starting SudoEvade ($$)"
+echo "$TIME: Initializing SudoEvade Helper Tool ($$)"
+echo "$TIME: Beginning Watch ==> $CMDFILE"
+
 
 while true; do
     TIME=$(date +"%T")
     NEWCMD=$(cat $CMDFILE)
     
-    echo ~
-    echo "${BOLD}$TIME${DLOB}: ${BLUE}Watching ==>${NC} $CMDFILE"
-    
-    
     if [[ $NEWCMD != "" ]]; then
-        CMDPATH=$(type -P $(echo "$NEWCMD" | awk '{print $1}'))
+        CMDPATH=$(type -P "$(command -v "$NEWCMD")")
         
-        echo "${BOLD}$TIME${DLOB}: ${GREEN}Recieved ==>${NC} $NEWCMD (via client)"
-        
-        cp $CMDPATH $DIRSTUB &
-        echo "${BOLD}$TIME${DLOB}: ${YELLOW}Performing ==>${NC} Cloning binary to $DIRSTUB"
+        echo "$TIME: Input ==> $NEWCMD"
+        cp "$CMDPATH" "$DIRSTUB"
 
-        sudo chown root:wheel "$DIRSTUB/${CMDPATH##*/}"
-        echo "${BOLD}$TIME${DLOB}: ${YELLOW}Performing ==>${NC} Modifiying cloned binary privileges (chown root:wheel)"
+        echo "$TIME: Performing Task ==> Cloning binary to $DIRSTUB"
 
+        sudo chown root:wheel "$DIRSTUB/${CMDPATH##*/}" &
         sudo chmod 4777 "$DIRSTUB/${CMDPATH##*/}"
-        echo "${BOLD}$TIME${DLOB}: ${YELLOW}Performing ==>${NC} Modifiying cloned binary privileges (chmod 4777)"
-         
-        mv "$DIRSTUB/${CMDPATH##*/}" "$DIRSTUB/sudoev_${CMDPATH##*/}"
-        echo "${BOLD}$TIME${DLOB}: ${PURPLE}Executing ==>${NC} [sudo] $NEWCMD (via client)"
+        
+        echo "$TIME: Performing Task ==> Modifiying cloned binary privileges"
+        echo "$TIME: Output ==> [sudo] $NEWCMD"
 
         echo "" > $CMDFILE
+        echo "$TIME: Resuming Watch ==> $CMDFILE"
     fi
-    sleep 0.45
+    sleep 0.3
 done

@@ -5,50 +5,61 @@
 #
 #  Created by BitesPotatoBacks on 5/31/22.
 #  Copyright (c) 2022 BitesPotatoBacks. All rights reserved.
-#  
+#
 
+BOLD=$(tput bold)
+NORMAL=$(tput sgr0)
 RED='\033[0;31m'
 NC='\033[0m'
 
-BOLD=$(tput bold)
-DLOB=$(tput sgr0)
-
 DIRSTUB="/Library/Caches/com.bitespotatobacks.SudoEvade"
 CMDFILE="$DIRSTUB/com.bitespotatobacks.SudoEvade.cmd.txt"
-
 CMDPATH=""
 
+SIZEEND=""
+NEWSIZE=""
+OLDSIZE=$(wc -c /tmp/com.bitespotatobacks.SudoEvade.stderr.log | awk '{print $1}')
+
+
 function stop() {
-    rm "$DIRSTUB/sudoev_${CMDPATH##*/}"
+    rm "$DIRSTUB/${CMDPATH##*/}"
     exit
 }
 
+
 trap 'stop' SIGINT
-
-if [[ ! "$@" ]]; then
-    echo "${BOLD}SudoEvade: ${RED}Error:${NC}${DLOB} Please insert a command to run"
+if [[ ! "$1" ]]; then
+    echo "${BOLD}SudoEvade: ${RED}Error:${NC}${NORMAL} Please insert a command to run"
     exit
 fi
 
-if ! command -v "$@" &> /dev/null; then
-    echo "${BOLD}SudoEvade: ${RED}Error:${NC}${DLOB} Command not found"
+if ! command -v "$1" &> /dev/null; then
+    echo "${BOLD}SudoEvade: ${RED}Error:${NC}${NORMAL} Command not found"
     exit
 fi
 
-echo $@ > $CMDFILE
-CMDPATH=$(type -P $(echo "$@" | awk '{print $1}'))
 
-SECS=0
+CMDPATH=$(type -P "$(command -v "$1")")
+CMDBASE=$(basename "$CMDPATH")
 
-until [ $SECS -ge 100 ]; do
-    if [[ -f "$DIRSTUB/sudoev_${CMDPATH##*/}" ]]; then
-        $DIRSTUB/sudoev_${@##*/} & wait
+if [[ "./$CMDBASE" == "$1" ]]; then
+    echo "$PWD/$CMDBASE" > $CMDFILE
+else
+    echo $1 > $CMDFILE
+fi
+
+
+while true; do
+    NEWSIZE=$(wc -c /tmp/com.bitespotatobacks.SudoEvade.stderr.log | awk '{print $1}')
+    SIZEEND=$(tail -n1 /tmp/com.bitespotatobacks.SudoEvade.stderr.log)
+
+    if [[ -f "$DIRSTUB/${CMDPATH##*/}" ]]; then
+        $DIRSTUB/${1##*/} ${@:2} & wait
         stop
     fi
     
-    sleep 0.1
-    ((SECS=SECS+1))
+    if [[ $NEWSIZE != $OLDSIZE ]] && [[ $SIZEEND != *"\$TERM"* ]]; then
+        echo "${BOLD}SudoEvade: ${RED}Error:${NC}${NORMAL} Unable to execute command (Helper encountered an issue) "
+        exit
+    fi
 done
-
-echo "${BOLD}SudoEvade: ${RED}Error:${NC}${DLOB} Helper took to long to respond"
-exit

@@ -26,8 +26,8 @@
     <key>LaunchOnlyOnce</key>
     <true/>
     <key>StandardOutPath</key>
-    <string>/tmp/com.bitespotatobacks.SudoEvade.stdout</string>
+    <string>/tmp/com.bitespotatobacks.SudoEvade.stdout.log</string>
     <key>StandardErrorPath</key>
-    <string>/tmp/com.bitespotatobacks.SudoEvade.stderr</string>
+    <string>/tmp/com.bitespotatobacks.SudoEvade.stderr.log</string>
 </dict>
 </plist>

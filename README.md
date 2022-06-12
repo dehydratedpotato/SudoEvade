@@ -26,6 +26,8 @@
 1. Download the proper .zip for your operating system from the [latest release](https://github.com/BitesPotatoBacks/SudoEvade/releases).
 2. Unzip the .zip and run the `install.sh` script in your terminal, like so: `sudo sh PATH/TO/SCRIPT/install.sh -i`.
 3. Once the installation is complete, you may execute a command with root priveleges using `sudoev YOUR_CMD_HERE`.
+
+If `sudoev` fails with an error such as `/bin/sh: INSERT_PATH_HERE: Permission denied` and/or `override rwxr-xr-x root/wheel for INSERT_PATH_HERE`, then: close your terminal, launch a new one, and call `sudoev` from there.
 ___
 
 If the install script fails and reports `Daemon did not start`, run `sudo sh PATH/TO/SCRIPT/install.sh -u` and then reinstall. If this fails, you may attempt to start the Daemon manually by performing the following:
@@ -34,14 +36,13 @@ sudo chmod 600 /Library/LaunchDaemons/com.bitespotatobacks.SudoEvade.plist
 sudo launchctl load -w /Library/LaunchDaemons/com.bitespotatobacks.SudoEvade.plist
 sudo launchctl start -w /Library/LaunchDaemons/com.bitespotatobacks.SudoEvade.plist
 ```
-Make sure the Daemon is running by checking `sudo launchctl list | grep "com.bitespotatobacks.SudoEvade"`.
+Make sure the Daemon is running by checking `sudo launchctl list | grep "com.bitespotatobacks.SudoEvade"`. 
+
   
 ## Known Issues
 The following issues are currently under investigation and will be fixed in an upcoming patch:
-- Using SudoEvade on scripts ran with `sh` do not behave correctly
-- Certain shell builtin commands (such as `read`) complain and prevent themselves from being run via SudoEvade
-- Running commands using `./` is broken using SudoEvade. For binaries not found in a dir in your `PATH`, please use complete paths.
-- Complete paths to binaries currently cannot contain spaces or be contained in quotes
+- Running shell scripts with SudoEvade may not behave correctly
+- Certain shell builtin commands, such as `read` and `cd`, fail to run with SudoEvade. Commands such as `echo` and `pwd` are not affected.
 
 If any other bugs or issues are identified or you want your system supported, please let me know in the [issues](https://github.com/BitesPotatoBacks/SudoEvade/issues) section.
 

@@ -41,8 +41,8 @@ Make sure the Daemon is running by checking `sudo launchctl list | grep "com.bit
   
 ## Known Issues
 The following issues are currently under investigation and will be fixed in an upcoming patch:
-- Running shell scripts with SudoEvade may not behave correctly
 - Certain shell builtin commands, such as `read` and `cd`, fail to run with SudoEvade. Commands such as `echo` and `pwd` are not affected.
+- Running shell scripts with SudoEvade may not behave correctly due to shell builtin issue (stated above)
 
 If any other bugs or issues are identified or you want your system supported, please let me know in the [issues](https://github.com/BitesPotatoBacks/SudoEvade/issues) section.
 

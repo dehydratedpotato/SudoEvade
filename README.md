@@ -32,7 +32,7 @@
 If you would like to check that SudoEvade is working properly, you may execute `sudoev id -u`. It should return an id of `0` if all is well.
 ___
 
-If the install script fails and reports `Daemon did not start`, run `sudo sh PATH/TO/SCRIPT/install.sh -u` and then reinstall. If this fails, you may attempt to start the Daemon manually by performing the following commands (depending on your OS):
+If the install script fails and reports `Daemon did not start`, run `sudo bash PATH/TO/SCRIPT/install.sh -u` and then reinstall. If this fails, you may attempt to start the Daemon manually by performing the following commands (depending on your OS):
 <details>
    
 <summary>Commands for MacOS</summary>

@@ -1,3 +1,19 @@
+## v0.1.2 (June 15, 2022)
+### Release Notes
+This patch contains crucial bug fixes and improvements as well as **Linux support** (official support for Ubuntu and Debian based distros).
+### Changelog
+**Bug Fixes**
+- Fix for shell builtin commands failing to execute
+- Fix for shell scripts not working properly when using shell builtin commands
+- Fix for issue cause by previous patch that prevented root privileges on certain commands
+
+**Improvements**
+- Added version reporting to installer
+- Improvements to error catching in stdout for helper diagnostic logs
+- Generic efficiency and speed improvements
+
+___
+
 ## v0.1.1 (June 12, 2022)
 ### Release Notes
 

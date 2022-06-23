@@ -64,7 +64,8 @@ sudo systemctl enable com.bitespotatobacks.SudoEvade
 
   
 ## Known Issues
-**No issues have been identified as of patch v0.1.2**
+**The follwing have been identified:**
+- SudoEvade fails to check for helper errors after system restart due to diagnostic logs being stored in `/tmp` (will be fixed next release)
 
 If any bugs or issues are identified or you want your system supported, please let me know in the [issues](https://github.com/BitesPotatoBacks/SudoEvade/issues) section.
 

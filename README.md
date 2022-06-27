@@ -29,7 +29,7 @@
 2. Unzip the .zip file and run the `install.sh` script in your terminal, like so: `sudo bash PATH/TO/SCRIPT/install.sh -i`.
 3. Once the installation is complete, you may execute a command with root priveleges using `sudoev YOUR_CMD_HERE`.
 
-If you would like to check that SudoEvade is working properly, you may execute `sudoev id -u`. It should return an id of `0` if all is well.
+To check that SudoEvade is working properly, run `sudoev id -u`. If all is well, it should return a value of `0`.
 ___
 
 If the install script fails and reports `Daemon did not start`, run `sudo bash PATH/TO/SCRIPT/install.sh -u` and then reinstall. If this fails, you may attempt to start the Daemon manually by performing the following commands (depending on your OS):
@@ -61,11 +61,9 @@ sudo systemctl enable com.bitespotatobacks.SudoEvade
    Make sure the Daemon is running by checking `systemctl | grep "com.bitespotatobacks.SudoEvade"`. 
    
 </details>
-
   
 ## Known Issues
-**The follwing have been identified:**
-- SudoEvade fails to check for helper errors after system restart due to diagnostic logs being stored in `/tmp` (will be fixed next release)
+**No issues have been identified for now**
 
 If any bugs or issues are identified or you want your system supported, please let me know in the [issues](https://github.com/BitesPotatoBacks/SudoEvade/issues) section.
 

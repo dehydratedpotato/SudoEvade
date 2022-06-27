@@ -1,3 +1,17 @@
+## v0.1.3 (June 26, 2022)
+### Release Notes
+This patch contains a crucial bug fix for macOS and general improvements for the tool.
+### Changelog
+**Bug Fixes**
+- (MacOS) Fix for client failing to detect helper errors after system restart due to stderr log files being stored in `/tmp`
+
+**Improvements**
+- Helper may now report it's version with opt `-v`
+- Install Script and Helper stdout have been further improved
+- Generic dead code cleaning
+
+___
+
 ## v0.1.2 (June 15, 2022)
 ### Release Notes
 This patch contains crucial bug fixes and improvements as well as **Linux support** (official support for Ubuntu and Debian based distros).
@@ -26,7 +40,7 @@ This patch contains crucial bug fixes and improvements. More bug fixes and Linux
 - Fixed binaries located at paths containing spaces unable to execute
 - Fixed binaries located at paths using trailing characters (./) unable to execute
 - Fixed binaries reporting their names to contain a sudoev_ prefix
-- 
+
 **Improvements**
 
 - Helper tool sampling interval increased

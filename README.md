@@ -63,7 +63,9 @@ sudo systemctl enable com.bitespotatobacks.SudoEvade
 </details>
   
 ## Known Issues
-**No issues have been identified for now**
+**The following issues have been identified:**
+- `chown root:wheel` may return `illegal group name` via SudoEvade
+- `kill` may return `illegal process id` via SudoEavde
 
 If any bugs or issues are identified or you want your system supported, please let me know in the [issues](https://github.com/BitesPotatoBacks/SudoEvade/issues) section.
 

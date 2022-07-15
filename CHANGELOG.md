@@ -1,3 +1,23 @@
+## v0.2.0 (July 15, 2022)
+### Release Notes
+This minor contains brand new command line arguments to the client, as well as general improvements and minor fixes. More fixes and improvements to come in a future patch.
+
+### Changelog
+**Features**
+- Added command line argument to run command in the background via the helper
+- Added command line argument to attempt to force a command to run, ignoring all error and safety checks
+- Added command line argument to run command rootless on helper failure
+
+**Bug Fixes**
+- (MacOS) Hopeful fix for install script skipping `chmod` for daemon plist randomly
+
+**Improvements**
+- Made scripts universal for all OS' rather than divided
+- Improved on installer and helper outputs
+- Hiding unneeded error from `rm` after command failure on exit
+
+___
+
 ## v0.1.3 (June 26, 2022)
 ### Release Notes
 This patch contains a crucial bug fix for macOS and general improvements for the tool.

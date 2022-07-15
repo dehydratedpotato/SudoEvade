@@ -26,7 +26,7 @@
 
 ## How The Command Works
 
-In order to run commands as root without the usuaul requirements of `bash`, SudoEvade leverages the power of a launch Daemon.
+In order to run commands as root without the usual requirements of `bash`, SudoEvade leverages the power of a launch Daemon.
 
 1. The client binary captures your inputted command string and saves it to a file.
 2. When that file changes, the Daemon Helper may read it and find the location of the command's binary.

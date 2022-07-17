@@ -4,7 +4,7 @@ This minor contains crucial fixes and cleanups from the last version, as well as
 
 ### Changelog
 **Features**
-- Added client command line argument to use tty redirection over binary cloning
+- Added client command line argument to use tty redirection over binary cloning (experimental)
 - Added installer command line argument to reinstall  
 
 **Bug Fixes**

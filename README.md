@@ -33,12 +33,12 @@ In order to run commands as root without the usual requirements of `bash`, SudoE
 3. Once found, the Daemon Helper clones the binary to a hidden directory and modifies the clone to elevate it's privileges.
 4. Once the cloned binary is finished, the client can then execute your inputted command using the cloned and modified binary.
 
-There are easier ways SudoEvade could be implemented, but I specifically went this route because I thought it would be more interesting to deal with :wink:
+There are easier ways SudoEvade could be implemented, but I specifically went this route because I thought it would be more interesting to deal with.
 
 ## Installation and Usage
 1. Download the .zip file from the [latest release](https://github.com/BitesPotatoBacks/SudoEvade/releases).
 2. Unzip the .zip file and run the `install.sh` script in your terminal, like so: `sudo bash PATH/TO/SCRIPT/install.sh -i`. To see all installer options, use arg `-h`.
-3. Once the installation is complete, you may execute a command with root priveleges using `sudoev YOUR_CMD_HERE`. To see all runtime options, use arg `-h`.
+3. Once the installation is complete, you may execute a command with root priveleges using `sudoev`. To see all runtime options, use arg `-h`.
 
 To check that SudoEvade is working properly, run `sudoev id -u`. If all is well, it should return a value of `0`.
 ___
@@ -75,7 +75,6 @@ sudo systemctl enable com.bitespotatobacks.SudoEvade
   
 ## Known Issues
 **The following issues have been identified:**
-- (macOS) `chown root:wheel` may return `illegal group name` via SudoEvade
 - (macOS) `kill` may return `illegal process id` via SudoEavde 
 
 If any bugs or issues are identified or you want your system supported, please let me know in the [issues](https://github.com/BitesPotatoBacks/SudoEvade/issues) section.

@@ -1,3 +1,22 @@
+## v0.3.0 (July 17, 2022)
+### Release Notes
+This minor contains crucial fixes and cleanups from the last version, as well as a couple of new features.
+
+### Changelog
+**Features**
+- Added client command line argument to use tty redirection over binary cloning
+- Added installer command line argument to reinstall  
+
+**Bug Fixes**
+- Fixed running command from helper not accepting full command string args
+- Fixed client command line args breaking command string input when separated
+- (macOS) Fixed `chown` possibly working incorrectly by making use  of options `-t` or `-b`
+
+**Improvements**
+- Hide ugly install script errors and replaced with meaningful ones
+
+___
+
 ## v0.2.0 (July 15, 2022)
 ### Release Notes
 This minor contains brand new command line arguments to the client, as well as general improvements and minor fixes. More fixes and improvements to come in a future patch.

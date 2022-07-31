@@ -1,3 +1,17 @@
+## v0.3.1 (July 31, 2022)
+### Release Notes
+This patch contains a crucial bug fixe for the installer and helper error recognition improvements. 
+
+### Changelog
+**Bug Fixes**
+- Fixed install script not actually adding `/usr/local/bin` to PATH when missing (which could prevent the user from using the tool)
+
+**Improvements**
+- Code density improvements
+- Improved recognition of helper failure by adding a unresponsive helper timeout (modify with `-T`)
+
+___
+
 ## v0.3.0 (July 17, 2022)
 ### Release Notes
 This minor contains crucial fixes and cleanups from the last version, as well as a couple of new features.

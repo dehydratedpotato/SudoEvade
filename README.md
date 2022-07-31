@@ -24,8 +24,8 @@
     <br>
 </p>
 
-## How The Command Works
-
+## Project Deetds
+### How the Command Works
 In order to run commands as root without the usual requirements of `bash`, SudoEvade leverages the power of a launch Daemon.
 
 1. The client binary captures your inputted command string and saves it to a file.
@@ -34,6 +34,9 @@ In order to run commands as root without the usual requirements of `bash`, SudoE
 4. Once the cloned binary is finished, the client can then execute your inputted command using the cloned and modified binary.
 
 There are easier ways SudoEvade could be implemented, but I specifically went this route because I thought it would be more interesting to deal with.
+
+### Usage Warning
+If you mess something up in your system running a command as root under SudoEvade when you **should not** have, don't blame me for your lost files, broken OS install, or whatever...
 
 ## Installation and Usage
 1. Download the .zip file from the [latest release](https://github.com/BitesPotatoBacks/SudoEvade/releases).
@@ -73,11 +76,10 @@ sudo systemctl enable com.bitespotatobacks.SudoEvade
    
 </details>
   
-## Known Issues
-**The following issues have been identified:**
-- (macOS) `kill` may return `illegal process id` via SudoEavde 
+## Issues
+SudoEvade may suffer from issues when using certain shell builtins (like `kill`) or commands that require access to system groups (like `chown root:wheel` in macOS). Some of these problems can be worked around by using the tty piping arg `-t`.
 
-If any bugs or issues are identified or you want your system supported, please let me know in the [issues](https://github.com/BitesPotatoBacks/SudoEvade/issues) section.
+If any other bugs or issues are identified or you want your system supported, please let me know in the [issues](https://github.com/BitesPotatoBacks/SudoEvade/issues) section.
 
 ## Support
 If you would like to support this project, a small donation to my [Cash App](https://cash.app/$bitespotatobacks) would be much appreciated!
